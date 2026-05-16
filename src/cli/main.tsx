@@ -18,6 +18,8 @@ import { App } from './view/components/App'
 
     app.unmount()
     await fs.rm('.data/temp', { recursive: true, force: true })
+
+    console.log('\n\nお疲れさまでした。\n')
   }
 
   process.once('SIGINT', shutdown)

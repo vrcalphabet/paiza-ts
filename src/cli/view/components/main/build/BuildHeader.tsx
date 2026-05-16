@@ -21,13 +21,13 @@ export function BuildHeader() {
           <Text color="cyanBright">
             <Spinner type="dots" />
           </Text>
-          <Text color="gray"> rebuilding...</Text>
+          <Text color="gray"> Rebuilding...</Text>
         </>
       )}
       {(status === 'running' || status === 'done') && (
         <>
           <Badge backgroundColor="greenBright">SUCCEEDED</Badge>
-          <Text color="gray"> rebuilt in </Text>
+          <Text color="gray"> Build completed in </Text>
           <Text color="greenBright">
             {(buildInfo as DetailedBuildInfo).elapsed} ms
           </Text>

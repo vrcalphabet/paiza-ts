@@ -8,11 +8,11 @@ interface KeyBindsProps {
 export function KeyBinds({ quitOnly }: KeyBindsProps) {
   const keyBindMap =
     quitOnly ?
-      { 'Ctrl+C': 'quit' }
+      { 'Ctrl+C': 'Quit' }
     : {
-        T: 'test',
-        'Ctrl+S': 'submit',
-        'Ctrl+C': 'quit',
+        T: 'Test',
+        'Ctrl+S': 'Submit',
+        'Ctrl+C': 'Quit',
       }
 
   return (

@@ -126,7 +126,7 @@ export function CaseDetails({ cursor }: CaseDetailsProps) {
       </Box>
       <Box position="absolute" bottom={0} right={0} left={0} justifyContent="center">
         <Padding>
-          <Text color="gray">use W/A/S/D to scroll</Text>
+          <Text color="gray">Use W/A/S/D to scroll</Text>
         </Padding>
       </Box>
       <Box position="absolute" bottom={0} right={1}>

@@ -29,12 +29,12 @@ export function Main() {
           {id !== undefined ?
             <Box flexDirection="column" alignItems="center">
               <Box>
-                <Text color="gray">watching </Text>
+                <Text color="gray">Watching </Text>
                 <Text color="greenBright">src/main.ts</Text>
               </Box>
-              <Text color="gray">Waiting for build to start</Text>
+              <Text color="gray">Waiting for the build to start</Text>
             </Box>
-          : <Text color="gray">Please select a problem</Text>}
+          : <Text color="gray">Select a problem to continue</Text>}
         </Box>
       }
     </Box>

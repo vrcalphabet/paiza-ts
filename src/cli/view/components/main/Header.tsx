@@ -18,7 +18,7 @@ export function Header() {
       </Padding>
       {id !== undefined && (
         <Padding>
-          <Text color="gray">watching </Text>
+          <Text color="gray">Watching </Text>
           <Text color="greenBright">src/main.ts</Text>
         </Padding>
       )}

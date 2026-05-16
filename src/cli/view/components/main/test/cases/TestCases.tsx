@@ -25,11 +25,11 @@ export function TestCases({ cursor }: TestCasesProps) {
             {i === cursor ?
               <Box columnGap={2}>
                 <Text color="black" backgroundColor="white">
-                  case #{c.no}
+                  Case #{c.no}
                 </Text>
-                <Text color="gray">use Q/E to move cursor</Text>
+                <Text color="gray">Press Q/E to move the cursor</Text>
               </Box>
-            : <Text color="gray">case #{c.no}</Text>}
+            : <Text color="gray">Case #{c.no}</Text>}
           </Box>
           <Spacer />
           <Text color="gray">{c.elapsed?.toLocaleString() ?? '-'} ms</Text>

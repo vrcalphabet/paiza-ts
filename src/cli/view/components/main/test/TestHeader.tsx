@@ -23,14 +23,14 @@ export function TestHeader() {
             TEST
           </Text>
         </Box>
-        {status === 'build_failed' && <Text color="gray">skipped</Text>}
+        {status === 'build_failed' && <Text color="gray">Skipped</Text>}
         {cases.length > 0 &&
           cases.length === doneCases.length &&
           (passed ?
             <Badge backgroundColor="greenBright">PASSED</Badge>
           : <Badge backgroundColor="redBright">FAILED</Badge>)}
       </Box>
-      {(status === 'testing' || status === 'done') && (
+      {(status === 'running' || status === 'done') && (
         <Box columnGap={2}>
           <Box>
             <Text color="cyanBright">{avgElapsed.toLocaleString()} ms/case</Text>
@@ -51,18 +51,6 @@ export function TestHeader() {
               {doneCases.filter((c) => c.status === 'failed').length}
             </Text>
           </Box>
-        </Box>
-      )}
-      {(status === 'submitting' || status === 'submitted') && (
-        <Box
-          width="100%"
-          height="100%"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-        >
-          <Text color="greenBright">✓ Successfully submitted!</Text>
-          <Text color="greenBright">Well Done.</Text>
         </Box>
       )}
     </Box>

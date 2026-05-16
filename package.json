@@ -1,0 +1,45 @@
+{
+  "name": "paiza-ts",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "paiza-ts_start": "dist/cli/main.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "format": "npx prettier --write src",
+    "build": "npx tsdown"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "@tsdown/css": "^0.21.10",
+    "@types/ink-spinner": "^3.0.5",
+    "@types/node": "^25.4.0",
+    "@types/react": "^19.2.14",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-css-order": "^2.2.0",
+    "tsdown": "^0.21.10",
+    "typescript-eslint": "^8.59.2"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "ink": "^7.0.1",
+    "ink-spinner": "^5.0.0",
+    "puppeteer": "^24.40.0",
+    "terminal-size": "^4.0.1",
+    "zustand": "^5.0.12"
+  },
+  "overrides": {
+    "ink": "^7.0.1"
+  }
+}

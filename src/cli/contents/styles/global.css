@@ -1,0 +1,95 @@
+body {
+  overflow-x: hidden;
+}
+
+#global-header {
+  & > :is(div, ul) {
+    display: none;
+    pointer-events: none;
+  }
+}
+
+#pagebody {
+  padding-left: 28px;
+}
+
+.p-challenges-layout-container,
+.p-challenges-layout-container__main,
+.challenges_header,
+.c-h1--with_icon {
+  width: 90vw;
+  max-width: 800px;
+}
+
+.p-challenges-layout-container__sub,
+.d-challenges-ready__boxInr-side {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-95%);
+  z-index: 1;
+  transition: 0.2s transform;
+  box-sizing: initial;
+  box-shadow: 6px 0px 6px -6px rgb(0 0 0 / 25%);
+  background-color: white;
+  padding: calc(72px + 14px) 14px 0;
+  overflow-y: auto;
+
+  &:hover {
+    transform: none;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 9999px;
+      background-color: lightgray;
+      width: 100%;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.p-challenges-layout-container__main {
+  margin-left: initial;
+}
+
+@media (width < 900px) {
+  .glicko_rating_area__detail_link + div {
+    flex-direction: column !important;
+  }
+}
+
+.s-breadcrumb,
+.challenges_nav_link--inline,
+#global-footer {
+  display: none;
+}
+
+.boxSkillcheck {
+  margin-left: 0;
+  width: 90vw;
+}
+
+.PT_results_link {
+  display: flex;
+  align-items: center;
+  transition: background-position 0.4s;
+  background: linear-gradient(90deg, #35c4d4 50%, #333 50%) 100% / 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  height: 100%;
+  color: transparent;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-decoration: none !important;
+
+  &:hover {
+    background-position: 0 100% !important;
+  }
+}

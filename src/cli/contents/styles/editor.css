@@ -1,0 +1,61 @@
+.editor_container {
+  display: none;
+}
+
+.boxSkillcheck {
+  margin: 0 0 50px;
+  width: min(90vw, 960px);
+
+  .section3 {
+    width: 100%;
+  }
+}
+
+.boxEditor {
+  margin: 0;
+  width: min(90vw, 960px);
+}
+
+@media (min-width: 960px) {
+  .boxSkillcheck {
+    margin: 0 auto 50px;
+  }
+
+  .boxEditor {
+    margin: 0 auto;
+  }
+}
+
+.PT_submit_container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transform: translateY(50%);
+  transition: 0.2s transform;
+  box-shadow: 0 4px 10px black;
+  background-color: #f5f5f5;
+  padding: 8px;
+  width: 100%;
+
+  &:hover {
+    transform: none;
+  }
+}
+
+.PT_timer {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.PT_buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  & > * {
+    margin: 0 !important;
+    width: 300px !important;
+    height: 45px;
+    font-size: 18px;
+  }
+}

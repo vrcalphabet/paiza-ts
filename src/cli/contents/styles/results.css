@@ -1,0 +1,15 @@
+.u-container-medium {
+  margin-left: 0;
+  width: 90vw;
+  max-width: 800px;
+}
+
+.p-mypage-result-card__data-item {
+  flex-direction: column;
+  align-items: normal;
+
+  & img {
+    width: 20px;
+    height: 20px;
+  }
+}

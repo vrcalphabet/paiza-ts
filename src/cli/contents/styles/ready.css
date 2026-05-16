@@ -1,0 +1,28 @@
+.d-challenges-ready__title-style {
+  width: 90vw;
+  max-width: 800px;
+}
+
+.d-challenges-ready__boxInr-main {
+  float: left !important;
+
+  & > div {
+    width: 90vw;
+    max-width: 800px;
+  }
+}
+
+.d-challenges-ready__box__section,
+.d-challenges-ready__box__section-inr,
+.d-challenges-ready__box__section-inr-inr {
+  background: none !important;
+  left: 0;
+}
+
+.d-challenges-ready__cfix {
+  display: flex !important;
+}
+
+.d-challenges-ready__banner__section {
+  display: none;
+}

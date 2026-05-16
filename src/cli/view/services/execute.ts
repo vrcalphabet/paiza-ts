@@ -46,7 +46,7 @@ export async function executeSubmit(page: Browser<MessageType>) {
   }
 
   const code = await fs.readFile('.data/temp/dist/main.cjs', 'utf-8')
-  
+
   await page.focus()
 
   await page.evaluate(
@@ -71,7 +71,9 @@ export async function executeSubmit(page: Browser<MessageType>) {
     [code],
   )
 
-  await new Promise((resolve) => setTimeout(resolve, 5000))
+  await page.waitForUrl(
+    /^https:\/\/paiza.jp\/challenges\/\d+\/(?:page\/result|retry_result)/,
+  )
 
   useTest.setState({ status: 'done' })
 }

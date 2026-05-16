@@ -53,6 +53,12 @@ export async function initializeTestHook(page: Browser<MessageType>) {
 
   await page.onNavigate({
     callback() {
+      const resultUrl =
+        /^https:\/\/paiza.jp\/challenges\/\d+\/(?:page\/result|retry_result)/
+      if (resultUrl.test(page.url)) {
+        return
+      }
+
       useTest.setState({
         status: 'idle',
         buildInfo: {},

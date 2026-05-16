@@ -59,4 +59,8 @@ export async function setup(page: Browser<MessageType>) {
       await fs.writeFile(`${base}/output.txt`, output)
     }
   })
+
+  page.onDialog(async (dialog) => {
+    await dialog.accept()
+  })
 }

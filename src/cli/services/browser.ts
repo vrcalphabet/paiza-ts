@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import puppeteer, { Page } from 'puppeteer'
+import puppeteer, { Dialog, Page } from 'puppeteer'
 
 type AnyFunctionMap<T> = {
   [K in keyof T]: (...args: any[]) => any
@@ -161,12 +161,24 @@ export class Browser<TDef extends AnyFunctionMap<TDef>> {
     await this.page.goto(url, { waitUntil: 'domcontentloaded' })
   }
 
-  async waitForUrl(url: string) {
-    if (this.page.url() === url) return
+  onDialog(callback: (dialog: Dialog) => void) {
+    this.page.on('dialog', callback)
+  }
+
+  async waitForUrl(url: string | RegExp) {
+    const check = () => {
+      if (typeof url === 'string') {
+        return this.page.url() === url
+      } else {
+        return url.test(this.page.url())
+      }
+    }
+
+    if (check()) return
 
     return new Promise<void>((resolve) => {
       const handler = () => {
-        if (this.page.url() !== url) return
+        if (!check()) return
 
         this.page.off('framenavigated', handler)
         resolve()

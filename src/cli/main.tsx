@@ -13,7 +13,8 @@ import { App } from './view/components/App'
     isShuttingDown = true
 
     if (!page.isClosed) {
-      await page.exit()
+      // ブラウザが閉じるまで待ってるとUXが低下するため
+      void page.exit()
     }
 
     app.unmount()

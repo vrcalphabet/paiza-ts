@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "paiza-ts_start": "dist/cli/main.mjs"
+    "paiza-ts": "dist/cli/main.mjs"
   },
   "files": [
     "dist"

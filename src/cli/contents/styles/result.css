@@ -12,12 +12,12 @@
 #interview_area,
 .o-bottom,
 .m-box-list,
-.tagBadgeArea,
-#rank-up-background {
+.tagBadgeArea {
   display: none;
 }
 
-.notice-balloon {
+.notice-balloon,
+#rank-up-background {
   display: none !important;
 }
 

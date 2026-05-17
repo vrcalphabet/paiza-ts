@@ -25,7 +25,7 @@
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@tsdown/css": "^0.21.10",
     "@types/ink-spinner": "^3.0.5",
-    "@types/node": "^25.4.0",
+    "@types/node": "^25.8.0",
     "@types/react": "^19.2.14",
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",

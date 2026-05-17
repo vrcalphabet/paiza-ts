@@ -4,7 +4,13 @@ export async function editorScript(context: MessageType) {
   const sampleElements = document.querySelectorAll(
     '.sample-container .sample-content__input',
   )
-  const samples = [...sampleElements].map((sample) => sample.textContent)
+  const samples = [...sampleElements].map((sample) => {
+    const text = sample.textContent
+
+    // 何故か末尾に改行が含まれていない出力例（#D166とか）があるのでその対策
+    if (text.at(-1) !== '\n') return text + '\n'
+    return text
+  })
 
   // 入出力例をバックエンドに送信
   await context.samples(samples)

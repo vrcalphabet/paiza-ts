@@ -1,7 +1,7 @@
 {
-  "name": "paiza-ts",
+  "name": "@vrcalphabet/paiza-ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "TypeScriptでpaizaのコーディング問題をテスト・提出するためのライブラリ",
   "bin": {
     "paiza-ts": "dist/cli/main.mjs"
   },
@@ -13,7 +13,7 @@
     "build": "npx tsdown"
   },
   "keywords": [],
-  "author": "",
+  "author": "vrcalphabet",
   "license": "MIT",
   "type": "module",
   "devDependencies": {

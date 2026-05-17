@@ -1,6 +1,8 @@
 export async function resultScript() {
   const wrap = (selector: string) => {
-    const target = document.querySelector(selector)!
+    const target = document.querySelector(selector)
+    if (!target) return
+
     const wrapper = document.createElement('div')
     wrapper.classList.add('PT_editor_wrapper')
 

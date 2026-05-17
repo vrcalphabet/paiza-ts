@@ -2,6 +2,9 @@
   "name": "@vrcalphabet/paiza-ts",
   "version": "1.0.0",
   "description": "TypeScriptでpaizaのコーディング問題をテスト・提出するためのライブラリ",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "paiza-ts": "dist/cli/main.mjs"
   },

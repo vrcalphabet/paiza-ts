@@ -75,6 +75,9 @@ export async function executeSubmit(page: Browser<MessageType>) {
     /^https:\/\/paiza.jp\/challenges\/\d+\/(?:page\/result|retry_result)/,
   )
 
+  // 画面が完全に切り替わるまで待つ
+  await new Promise((resolve) => setTimeout(resolve, 500))
+
   useTest.setState({ status: 'done' })
 }
 

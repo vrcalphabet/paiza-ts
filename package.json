@@ -9,7 +9,8 @@
     "paiza-ts": "dist/cli/main.mjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "logo.png"
   ],
   "scripts": {
     "format": "npx prettier --write src",

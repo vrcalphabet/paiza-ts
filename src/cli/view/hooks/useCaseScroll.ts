@@ -11,7 +11,8 @@ interface UseCaseScrollParams {
 export function useCaseScroll({
   innerWidth,
   innerHeight,
-  scrollWidth, scrollHeight
+  scrollWidth,
+  scrollHeight,
 }: UseCaseScrollParams) {
   const SCROLL_X_SPEED = 2
   const SCROLL_Y_SPEED = 1
@@ -41,11 +42,11 @@ export function useCaseScroll({
     // コンテナに要素が収まっている場合はスクロール不要
     if (scrollHeight <= innerHeight) return
 
-    if (input === "w") {
+    if (input === 'w') {
       setScrollY((prev) => Math.max(prev - SCROLL_Y_SPEED, 0))
     }
 
-    if (input === "s") {
+    if (input === 's') {
       setScrollY((prev) => Math.min(prev + SCROLL_Y_SPEED, maxScrollY))
     }
   })

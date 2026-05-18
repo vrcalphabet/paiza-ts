@@ -18,11 +18,12 @@ export const useTitle = create<TitleState>(() => {
 export async function initializeTitleHook(page: Browser<MessageType>) {
   await page.onNavigate({
     callback: async () => {
-      const resultUrl = /^https:\/\/paiza.jp\/challenges\/\d+\/(?:page\/result|retry_result)/
+      const resultUrl =
+        /^https:\/\/paiza.jp\/challenges\/\d+\/(?:page\/result|retry_result)/
       if (resultUrl.test(page.url)) {
         return
       }
-      
+
       const challengeUrl = /^https:\/\/paiza\.jp\/challenges\/\d+\/(?:show|retry)$/
       if (!challengeUrl.test(page.url)) {
         useTitle.setState({ id: undefined, name: undefined })

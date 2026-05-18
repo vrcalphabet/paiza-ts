@@ -13,9 +13,7 @@ export function SubmitHeader() {
           SUBMIT
         </Text>
       </Box>
-      {status === 'done' && (
-        <Badge backgroundColor="greenBright">SUCCEEDED</Badge>
-      )}
+      {status === 'done' && <Badge backgroundColor="greenBright">SUCCEEDED</Badge>}
     </Box>
   )
 }

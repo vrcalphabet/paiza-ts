@@ -15,8 +15,8 @@
 .d-challenges-ready__box__section,
 .d-challenges-ready__box__section-inr,
 .d-challenges-ready__box__section-inr-inr {
-  background: none !important;
   left: 0;
+  background: none !important;
 }
 
 .d-challenges-ready__cfix {

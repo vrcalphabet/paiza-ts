@@ -41,13 +41,27 @@ export async function bootstrap() {
     )
 
     return page
-  } catch {
-    // 別のコンテキストですでにブラウザが開かれている場合
-    console.log(
-      c.redBright(
-        '\nERROR: 既に別のコンテキストでブラウザが開かれています。処理を停止します。',
-      ),
-    )
-    process.exit(1)
+  } catch (e) {
+    if (e instanceof Error) {
+      if (e.message.includes('The browser is already running')) {
+        // 別のコンテキストですでにブラウザが開かれている場合
+        console.log(
+          c.redBright(
+            '\nERROR: 既に別のコンテキストでブラウザが開かれています。処理を停止します。',
+          ),
+        )
+      } else if (e.message.includes('Could not find Google Chrome executable')) {
+        // 実行可能ファイルが見つからなかった場合
+        console.log(
+          c.redBright(
+            '\nERROR: Google Chromeの実行ファイルが見つかりませんでした。処理を停止します。',
+          ),
+        )
+      } else {
+        console.log(c.redBright(e.message))
+      }
+
+      process.exit(1)
+    }
   }
 }

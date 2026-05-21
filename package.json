@@ -17,6 +17,14 @@
     "build": "npx tsdown"
   },
   "keywords": [],
+  "homepage": "https://github.com/vrcalphabet/paiza-ts",
+  "bugs": {
+    "url": "https://github.com/vrcalphabet/paiza-ts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vrcalphabet/paiza-ts.git"
+  },
   "author": "vrcalphabet",
   "license": "MIT",
   "type": "module",

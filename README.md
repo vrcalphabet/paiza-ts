@@ -13,6 +13,7 @@ TypeScriptでpaizaのコーディング問題をテスト・提出するため�
 ## 推奨要件
 
 - Node.js v25.x以上
+- npm v11.x以上
 - Google Chrome 136以上
 
 ## 使い方

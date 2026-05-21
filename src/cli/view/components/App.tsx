@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
-import { Box, useInput, useWindowSize } from 'ink'
+import { Box, useWindowSize } from 'ink'
 import type { Browser } from '../../services/browser'
 import type { MessageType } from '../../types/message'
-import { executeSubmit, executeTest } from '../services/execute'
+import { executeSubmit } from '../services/execute'
 import { initializeHooks } from '../services/initialize'
 import { setup } from '../services/setup'
 import { Footer } from './main/Footer'
 import { Header } from './main/Header'
 import { Main } from './main/Main'
+import { useGlobal } from '../hooks/useGlobal'
 
 interface AppProps {
   page: Browser<MessageType>
@@ -16,21 +17,9 @@ interface AppProps {
 
 export function App({ page, onQuit }: AppProps) {
   const { columns, rows } = useWindowSize()
-
-  useInput(async (input, key) => {
-    if (input === 'c' && key.ctrl) {
-      await onQuit()
-      return
-    }
-
-    if (input === 't') {
-      await executeTest()
-    }
-
-    if (input === 's' && key.ctrl) {
-      await executeSubmit(page)
-    }
-  })
+  const { setGlobal } = useGlobal()
+  
+  setGlobal({ page, onQuit })
 
   useEffect(() => {
     ;(async () => {

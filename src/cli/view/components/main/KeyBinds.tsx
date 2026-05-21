@@ -1,13 +1,39 @@
-import { Box, Text } from 'ink'
+import { Box, Text, useInput } from 'ink'
+import { useTest } from '../../hooks/useTest'
+import { useTitle } from '../../hooks/useTitle'
 import { Badge } from '../ui/Badge'
+import { executeSubmit, executeTest } from '../../services/execute'
+import { useGlobal } from '../../hooks/useGlobal'
 
-interface KeyBindsProps {
-  quitOnly: boolean
-}
+export function KeyBinds() {
+  const id = useTitle((state) => state.id)
+  const type = useTest((state) => state.type)
+  const status = useTest((state) => state.status)
+  
+  const onQuit = useGlobal(state => state.onQuit)!
+  const page = useGlobal(state => state.page)!
 
-export function KeyBinds({ quitOnly }: KeyBindsProps) {
+  const isSubmit = type === 'submit' && (status === 'running' || status === 'done')
+
+  useInput(async (input, key) => {
+    if (input === 'c' && key.ctrl) {
+      await onQuit()
+      return
+    }
+
+    if (id === undefined) return
+
+    if (input === 't') {
+      await executeTest()
+    }
+
+    if (input === 's' && key.ctrl) {
+      await executeSubmit(page)
+    }
+  })
+
   const keyBindMap =
-    quitOnly ?
+    id === undefined || isSubmit ?
       { 'Ctrl+C': 'Quit' }
     : {
         T: 'Test',

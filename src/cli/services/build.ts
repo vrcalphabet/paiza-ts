@@ -70,7 +70,7 @@ export async function test({
     return {
       success: false,
       hasError: true,
-      output: result.stderr,
+      output: `${result.stdout}${result.stderr}`,
     }
   }
 

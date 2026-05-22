@@ -105,9 +105,9 @@ export async function executeTest() {
     return {
       no: i + 1,
       status: 'idle',
-      input: input.replaceAll('\r', ''),
+      input: normalize(input),
       output: '',
-      expected: expected.replaceAll('\r', ''),
+      expected: normalize(expected),
       hasError: false,
       error: undefined,
     }
@@ -131,7 +131,7 @@ export async function executeTest() {
       status: success ? 'passed' : 'failed',
       hasError,
       elapsed: time.end(),
-      output: output.replaceAll('\r', ''),
+      output: normalize(output),
     })
   })
 
@@ -144,4 +144,8 @@ function updateCase(index: number, c: Partial<Case>) {
     Object.assign(newCase[index]!, c)
     return { cases: newCase }
   })
+}
+
+function normalize(str: string) {
+  return str.replaceAll('\r', '').replaceAll('\t', '  ')
 }

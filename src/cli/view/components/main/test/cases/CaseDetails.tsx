@@ -168,7 +168,7 @@ function visibleReturn(
         const result =
           // 行が画面を突き破る場合は削って３点マークを
           truncated.length > width ? `${truncated.slice(0, width - 1)}…`
-            // 行が画面より左にいるときは、画面左に３点マークを
+            // 行が画面左端より左にいるときは、画面左に３点マークを
           : v.length >= 0 && truncated.length === 0 ? '…'
             // resultが空文字だと行が詰められてしまうので空白を追加
           : truncated || ' '

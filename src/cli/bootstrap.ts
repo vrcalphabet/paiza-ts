@@ -60,8 +60,8 @@ export async function bootstrap() {
       } else {
         console.log(c.redBright(e.message))
       }
-
-      process.exit(1)
     }
+
+    process.exit(1)
   }
 }

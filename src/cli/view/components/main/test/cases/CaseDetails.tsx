@@ -175,7 +175,8 @@ function visibleReturn(
 
         return (
           <Box key={`${i}-${v}`}>
-            <Text wrap="truncate">{result}</Text>
+            <Text>{result.slice(0, -1)}</Text>
+            <Text color="gray">{result.at(-1)}</Text>
           </Box>
         )
       })}

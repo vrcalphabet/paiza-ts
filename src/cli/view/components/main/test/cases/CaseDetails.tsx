@@ -86,12 +86,12 @@ export function CaseDetails({ cursor }: CaseDetailsProps) {
   return (
     <Box height="100%" position="relative">
       <Box width="100%" justifyContent="space-between" ref={boxRef}>
-        <CaseDetail isFirst={true} title="Input" titleColor="gray">
+        <CaseDetail isFirst={true} title="Input" titleColor="gray" maxWidth={40}>
           {visibleReturn(currentCase.input, boxSizes[0] ?? defaultSize, viewport)}
         </CaseDetail>
         {!currentCase.hasError ?
           <>
-            <CaseDetail title="Expected" titleColor="greenBright">
+            <CaseDetail title="Expected" titleColor="greenBright" maxWidth={40}>
               {visibleReturn(
                 currentCase.expected,
                 boxSizes[1] ?? defaultSize,
@@ -175,8 +175,8 @@ function visibleReturn(
 
         return (
           <Box key={`${i}-${v}`}>
-            <Text>{result.slice(0, -1)}</Text>
-            <Text color="gray">{result.at(-1)}</Text>
+            <Text wrap='truncate'>{result.slice(0, -1)}</Text>
+            <Text color="gray" wrap='truncate'>{result.at(-1)}</Text>
           </Box>
         )
       })}

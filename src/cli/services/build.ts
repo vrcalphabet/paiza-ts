@@ -23,6 +23,9 @@ export async function build(): Promise<BuildInfo> {
       target: 'node16.17',
       logLevel: 'silent',
       failOnWarn: true,
+      deps: {
+        alwaysBundle: [/.*/]
+      }
     })
 
     return { success: true }

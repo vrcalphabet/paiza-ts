@@ -4,13 +4,14 @@ import type { MessageType } from '../../types/message'
 
 interface TitleState {
   id: string | undefined
-  // 将来のために予約
+  internalId: string | undefined
   name: string | undefined
 }
 
 export const useTitle = create<TitleState>(() => {
   return {
     id: undefined,
+    internalId: undefined,
     name: undefined,
   }
 })
@@ -38,7 +39,11 @@ export async function initializeTitleHook(page: Browser<MessageType>) {
       const [, id, name] = title.match(/^(?:再チャレンジ )?(\w\d+):(.+)$/) ?? []
       if (id === undefined || name === undefined) return
 
-      useTitle.setState({ id, name })
+      const [, internalId] =
+        page.url.match(/\/challenges\/(\d+)\/(?:show|retry)$/) ?? []
+      if (internalId === undefined) return
+
+      useTitle.setState({ id, internalId, name })
     },
   })
 

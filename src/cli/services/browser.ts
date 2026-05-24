@@ -175,14 +175,14 @@ export class Browser<TDef extends AnyFunctionMap<TDef>> {
       }
     }
 
-    if (check()) return
+    if (check()) return this.url
 
-    return new Promise<void>((resolve) => {
+    return new Promise<string>((resolve) => {
       const handler = () => {
         if (!check()) return
 
         this.page.off('framenavigated', handler)
-        resolve()
+        resolve(this.url)
       }
       this.page.on('framenavigated', handler)
     })

@@ -1,9 +1,16 @@
 import fs from 'node:fs/promises'
+import path from 'node:path'
 
 export const fsEx = {
   async remake(path: string) {
     await fs.rm(path, { recursive: true, force: true })
     await fs.mkdir(path, { recursive: true })
+  },
+
+  async copyFile(sourceFile: string, targetRootDir: string) {
+    const targetDir = path.join(targetRootDir, path.dirname(sourceFile))
+    await fs.mkdir(targetDir, { recursive: true })
+    await fs.copyFile(sourceFile, path.join(targetDir, path.basename(sourceFile)))
   },
 
   async eachDir(path: string, callback: (name: string, index: number) => void) {

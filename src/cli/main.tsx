@@ -1,6 +1,6 @@
-import fs from 'node:fs/promises'
 import { render } from 'ink'
 import { bootstrap } from './bootstrap'
+import { fsEx } from './lib/fs-extended'
 import { App } from './view/components/App'
 
 ;(async () => {
@@ -18,7 +18,7 @@ import { App } from './view/components/App'
     }
 
     app.unmount()
-    await fs.rm('.data/temp', { recursive: true, force: true })
+    await fsEx.remake('.data/temp')
 
     console.log('\n\nお疲れさまでした。\n')
   }

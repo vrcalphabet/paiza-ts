@@ -2,9 +2,11 @@ import fs from 'node:fs/promises'
 import { fsEx } from '../../lib/fs-extended'
 import { Time } from '../../lib/time'
 import type { Browser } from '../../services/browser'
-import { build, test } from '../../services/build'
+import { build } from '../../services/build'
+import { test } from '../../services/test'
 import type { MessageType } from '../../types/message'
 import { type Case, useTest } from '../hooks/useTest'
+import { archive } from './archive'
 
 async function executeBuild() {
   const time = new Time((t) => Math.floor(t))
@@ -71,7 +73,7 @@ export async function executeSubmit(page: Browser<MessageType>) {
     [code],
   )
 
-  await page.waitForUrl(
+  const resultUrl = await page.waitForUrl(
     /^https:\/\/paiza.jp\/challenges\/\d+\/(?:page\/result|retry_result)/,
   )
 
@@ -79,6 +81,8 @@ export async function executeSubmit(page: Browser<MessageType>) {
   await new Promise((resolve) => setTimeout(resolve, 500))
 
   useTest.setState({ status: 'done' })
+
+  await archive(resultUrl)
 }
 
 export async function executeTest() {

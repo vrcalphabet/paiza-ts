@@ -1,6 +1,6 @@
 {
   "name": "@vrcalphabet/paiza-ts",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "TypeScriptでpaizaのコーディング問題をテスト・提出するためのライブラリ",
   "publishConfig": {
     "access": "public"

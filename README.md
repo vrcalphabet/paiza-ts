@@ -23,7 +23,7 @@ TypeScriptでpaizaのコーディング問題をテスト・提出するため�
 2. VSCode上のターミナル (Ctrl + @) 上で、以下のコマンドを実行します。
 
 ```bash
-npm create paiza-ts
+npm create paiza-ts@latest
 ```
 
 依存関係のインストールが終わると、Google Chrome が起動し、 paiza\.jp のタブが自動で開かれます。

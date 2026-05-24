@@ -45,7 +45,6 @@
   }
 }
 
-tr[id^=test_] .innerTable {
+tr[id^='test_'] .innerTable {
   white-space: nowrap;
 }
-

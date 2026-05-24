@@ -30,7 +30,7 @@ export class Browser<TDef extends AnyFunctionMap<TDef>> {
       // executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
       // args: ['--window-size=800,800'],
       args: ['--no-default-browser-check', '--hide-crash-restore-bubble'],
-      channel: "chrome", // FIXME: これないとスクロールがカクつく？
+      channel: 'chrome', // FIXME: これないとスクロールがカクつく？
     })
 
     void (await browser.pages()).map((page) => page.close())

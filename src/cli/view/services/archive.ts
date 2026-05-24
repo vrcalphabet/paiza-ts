@@ -28,10 +28,10 @@ export async function archive(resultUrl: string) {
   const files = Object.keys(fileTree.graph).map((filePath) =>
     path.relative(process.cwd(), filePath),
   )
-  
+
   files.push('.data/temp/dist/main.cjs')
-  files.push("package.json")
-  files.push("tsconfig.json")
+  files.push('package.json')
+  files.push('tsconfig.json')
 
   // ファイル群をアーカイブ保存先に複製
 

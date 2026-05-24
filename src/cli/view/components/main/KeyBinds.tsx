@@ -1,17 +1,17 @@
 import { Box, Text, useInput } from 'ink'
+import { useGlobal } from '../../hooks/useGlobal'
 import { useTest } from '../../hooks/useTest'
 import { useTitle } from '../../hooks/useTitle'
-import { Badge } from '../ui/Badge'
 import { executeSubmit, executeTest } from '../../services/execute'
-import { useGlobal } from '../../hooks/useGlobal'
+import { Badge } from '../ui/Badge'
 
 export function KeyBinds() {
   const id = useTitle((state) => state.id)
   const type = useTest((state) => state.type)
   const status = useTest((state) => state.status)
-  
-  const onQuit = useGlobal(state => state.onQuit)!
-  const page = useGlobal(state => state.page)!
+
+  const onQuit = useGlobal((state) => state.onQuit)!
+  const page = useGlobal((state) => state.page)!
 
   const isSubmit = type === 'submit' && (status === 'running' || status === 'done')
 

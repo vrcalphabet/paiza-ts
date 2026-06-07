@@ -53,17 +53,9 @@ export async function executeSubmit(page: Browser<MessageType>) {
 
   await page.evaluate(
     (_, code: string) => {
-      remove_stored_history()
-
-      code =
-        code
-          .replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '')
-          .replace(/^\t+/gm, (m) => m.replaceAll('\t', '  '))
-          .replace(/^(\/\/#region )/gm, '\n$1')
-          .replace(/^(\/\/#endregion)$/gm, '$1\n')
-          .trim() + '\n'
-
       // https://cdn-paiza.paiza.jp/packs/partials/commons/challenge_code_submit.521270a72f1d189e.js
+      remove_stored_history()
+      
       document.querySelector<HTMLInputElement>('#code')!.value = code
       document.querySelector<HTMLInputElement>('#programming_language_id')!.value =
         '2308' // JavaScript

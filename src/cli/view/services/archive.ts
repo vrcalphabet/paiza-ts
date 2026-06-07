@@ -25,11 +25,10 @@ export async function archive(resultUrl: string) {
       '@/lib*': './lib*',
     },
   })
-  const files = Object.keys(fileTree.graph).map((filePath) =>
+
+  const files = fileTree.files.map((filePath) =>
     path.relative(process.cwd(), filePath),
   )
-
-  files.push('.data/temp/dist/main.cjs')
   files.push('package.json')
   files.push('tsconfig.json')
 
@@ -45,7 +44,7 @@ export async function archive(resultUrl: string) {
   const metadata = {
     id,
     name,
-    date: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+    submit_date: format(new Date(), 'yyyy-MM-dd HH:mm:ss'),
     retry_url: `https://paiza.jp/challenges/${internalId}/retry`,
     result_url: resultUrl,
   }

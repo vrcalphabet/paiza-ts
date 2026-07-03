@@ -6,7 +6,6 @@ export default defineConfig({
   format: 'esm',
   outDir: 'dist',
   clean: true,
-  watch: true,
   banner: {
     js: '#!/usr/bin/env node',
   },

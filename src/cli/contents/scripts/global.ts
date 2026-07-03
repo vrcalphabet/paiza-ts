@@ -9,4 +9,14 @@ export function globalScript() {
 
   logo.href = '/challenges'
   logo.after(results)
+
+  const sidebar = document.querySelector<HTMLElement>(
+    '.p-challenges-layout-container__sub, .d-challenges-ready__boxInr-side',
+  )
+  if (!sidebar) return
+
+  document.addEventListener('scroll', () => {
+    sidebar.dataset['padding'] = Math.max(72 - window.scrollY, 0).toString()
+    console.log(sidebar.dataset['padding'])
+  })
 }

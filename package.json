@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "format": "npx prettier --write src",
-    "build": "npx tsdown"
+    "build": "npx tsdown",
+    "dev": "npx tsdown --watch"
   },
   "keywords": [],
   "homepage": "https://github.com/vrcalphabet/paiza-ts",

@@ -22,36 +22,46 @@ body {
 }
 
 .p-challenges-layout-container__sub,
-.d-challenges-ready__boxInr-side {
+.d-challenges-ready__boxInr-side,
+.PT_sidebar {
+  --padding-top: attr(data-padding px, 72px);
+
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  transform: translateX(-95%);
+  transform: translateX(calc(-100% + 15px));
   z-index: 1;
   transition: 0.2s transform;
   box-sizing: initial;
   box-shadow: 6px 0px 6px -6px rgb(0 0 0 / 25%);
   background-color: white;
-  padding: calc(72px + 14px) 14px 0;
+  /* ヘッダ高さ + 余白 */
+  padding: calc(var(--padding-top) + 14px) 14px 0;
   overflow-y: auto;
 
   &:hover {
     transform: none;
+  }
+}
 
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 9999px;
-      background-color: lightgray;
-      width: 100%;
-    }
+.p-challenges-layout-container__sub,
+.d-challenges-ready__boxInr-side,
+.PT_sidebar,
+.PT_sidebar_inner {
+  &:hover::-webkit-scrollbar,
+  &:hover .PT_sidebar_inner::-webkit-scrollbar {
+    width: 5px;
   }
 
   &::-webkit-scrollbar {
     width: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: lightgray;
+    width: 100%;
   }
 }
 

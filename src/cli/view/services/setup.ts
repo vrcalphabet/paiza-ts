@@ -1,10 +1,12 @@
 import fs from 'node:fs/promises'
+import { challengesScript } from '../../contents/scripts/challenges'
 import { editorScript } from '../../contents/scripts/editor'
 import { globalScript } from '../../contents/scripts/global'
 import { resultScript } from '../../contents/scripts/result'
 import { fsEx } from '../../lib/fs-extended'
 import type { Browser } from '../../services/browser'
 import type { MessageType } from '../../types/message'
+import challengesCss from '../../contents/styles/challenges.css?inline'
 import editorCss from '../../contents/styles/editor.css?inline'
 import globalCss from '../../contents/styles/global.css?inline'
 import readyCss from '../../contents/styles/ready.css?inline'
@@ -20,7 +22,7 @@ export async function setup(page: Browser<MessageType>) {
   })
 
   await page.evaluateOnNavigate({
-    url: /^https:\/\/paiza.jp\/challenges\/\d+\/ready$/,
+    url: /^https:\/\/paiza\.jp\/challenges\/\d+\/ready$/,
     style: readyCss,
   })
 
@@ -31,14 +33,20 @@ export async function setup(page: Browser<MessageType>) {
   })
 
   await page.evaluateOnNavigate({
-    url: /^https:\/\/paiza.jp\/challenges\/\d+\/(?:page\/result|retry_result)/,
+    url: /^https:\/\/paiza\.jp\/challenges\/\d+\/(?:page\/result|retry_result)/,
     style: resultCss,
     script: resultScript,
   })
 
   await page.evaluateOnNavigate({
-    url: /^https:\/\/paiza.jp\/skill_checks\/(?:retry_|sql_retry_)?results/,
+    url: /^https:\/\/paiza\.jp\/skill_checks\/(?:retry_|sql_retry_)?results/,
     style: resultsCss,
+  })
+
+  await page.evaluateOnNavigate({
+    url: /^https:\/\/paiza.jp\/challenges\/ranks\//,
+    style: challengesCss,
+    script: challengesScript,
   })
 
   await page.navigate('https://paiza.jp/challenges')

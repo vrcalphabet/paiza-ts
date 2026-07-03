@@ -17,6 +17,5 @@ export function globalScript() {
 
   document.addEventListener('scroll', () => {
     sidebar.dataset['padding'] = Math.max(72 - window.scrollY, 0).toString()
-    console.log(sidebar.dataset['padding'])
   })
 }

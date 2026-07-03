@@ -6,7 +6,7 @@
 
 ![](./logo.png)
 
-TypeScriptでpaizaのコーディング問題をテスト・提出するためのライブラリ
+TypeScript + VSCodeでpaizaのコーディング問題をテスト・提出するためのライブラリ
 
 <div><video controls src="https://github.com/user-attachments/assets/bc8f02b0-991c-47bb-8837-105b01484634" muted="false"></video></div>
 

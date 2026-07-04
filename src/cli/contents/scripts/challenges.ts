@@ -20,8 +20,8 @@ export function challengesScript() {
       const diffElem = $('.problem-box__data dd:nth-of-type(4)')
       const timeElem = $('.problem-box__header__note strong')
 
-      const rate = parse(rateElem!, /(\d+)\.(\d+)%/)
-      const diff = parse(diffElem!, /(^\d+) ±(\d+)/)
+      const rate = parse(rateElem!, /(\d+)\.(\d+)％/)
+      const diff = parse(diffElem!, /(\d+) ±(\d+)/)
       const time = parse(timeElem ?? '0分0秒', /(\d+)分(\d+)秒/)
 
       if (rate === undefined || diff === undefined || time === undefined) return []

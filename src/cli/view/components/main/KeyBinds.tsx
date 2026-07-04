@@ -27,7 +27,7 @@ export function KeyBinds() {
       await executeTest()
     }
 
-    if (input === 's' && key.ctrl) {
+    if (input === 'r' && key.ctrl) {
       await executeSubmit(page)
     }
   })
@@ -37,7 +37,7 @@ export function KeyBinds() {
       { 'Ctrl+C': 'Quit' }
     : {
         T: 'Test',
-        'Ctrl+S': 'Submit',
+        'Ctrl+R': 'Submit',
         'Ctrl+C': 'Quit',
       }
 

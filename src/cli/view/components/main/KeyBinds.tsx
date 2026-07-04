@@ -21,7 +21,7 @@ export function KeyBinds() {
       return
     }
 
-    if (id === undefined) return
+    if (id === undefined || isSubmit) return
 
     if (input === 't') {
       await executeTest()

@@ -99,7 +99,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  margin: 84px 12px 0 0;
+  margin: calc(var(--padding-top) + 14px) 12px 0 0;
 
   &.active {
     button {

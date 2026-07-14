@@ -36,7 +36,7 @@ export async function initializeTitleHook(page: Browser<MessageType>) {
       })
       if (title === undefined) return
 
-      const [, id, name] = title.match(/^(?:再チャレンジ )?(\w\d+):(.+)$/) ?? []
+      const [, id, name] = title.match(/^(\w\d{3}):(.+)$/) ?? []
       if (id === undefined || name === undefined) return
 
       const [, internalId] =

@@ -44,14 +44,36 @@ async function minifyBuild() {
   const code = await fs.readFile('.data/temp/dist/main.cjs', 'utf-8')
   const normalizedCode = code.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '')
 
-  let result = ''
-  const pushResult = (path: string | undefined, code: string) => {
-    if (path !== undefined) {
-      result += `\n//#region ${path}`
-    }
-    result += `\n${code}\n`
-    if (path !== undefined) {
-      result += `//#endregion\n`
+  const result = {
+    source: '',
+    runtime: '',
+    external: '',
+  }
+
+  const pushResult = (
+    path: string | undefined,
+    code: string,
+    isSourceDir: boolean,
+  ) => {
+    // ランタイムは 'rolldown' に、外部ライブラリの場合はそのライブラリの名前に
+    const nameMatch = path?.match(/\/?node_modules\/((@[^/]+\/)?[^/]+)/)
+    const name =
+      nameMatch ? nameMatch[1]
+      : path === '\\0rolldown/runtime.js' ? 'rolldown'
+      : path
+
+    const region = `\n// ${name}`
+    const body = `\n${code}\n`
+
+    if (name === undefined || name === 'rolldown') {
+      // 野良コード（組み込みライブラリの呼び出し）やランタイムは、ランタイムの最後に移動する
+      result.runtime += name === undefined ? body.trimStart() : region + body
+    } else if (isSourceDir) {
+      // ユーザが書いたコードは、__main__の中に移動する
+      result.source += region + body
+    } else {
+      // 外部ライブラリは、__main__の外に移動する
+      result.external += region + body
     }
   }
 
@@ -67,7 +89,7 @@ async function minifyBuild() {
     if (path !== undefined) {
       const isSourceDir = ['src', 'lib'].includes(path.split('/')[0]!)
       if (isSourceDir) {
-        pushResult(path, trimmedCode)
+        pushResult(path, trimmedCode, true)
         return
       }
     }
@@ -76,8 +98,19 @@ async function minifyBuild() {
       compress: { unused: false },
       ecma: 2022,
     })
-    pushResult(path, output.code!.trim())
+    pushResult(path, output.code!.trim(), false)
   })
 
-  await fs.writeFile('.data/temp/dist/main.cjs', result.trimStart())
+  await fs.writeFile(
+    '.data/temp/dist/main.cjs',
+    /* js */ `
+function __main__() {
+${result.source.trim()}
+}
+
+//========================== 外部ライブラリ群 ==========================//
+${result.runtime}${result.external}
+;__main__()
+`.trimStart(),
+  )
 }

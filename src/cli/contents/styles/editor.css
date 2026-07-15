@@ -1,4 +1,5 @@
-.editor_container {
+.editor_container,
+.p-challenges-icon--gear {
   display: none;
 }
 

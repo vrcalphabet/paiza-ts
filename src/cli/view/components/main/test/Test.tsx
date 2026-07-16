@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Box, useInput } from 'ink'
 import { useTest } from '../../../hooks/useTest'
 import { TestHeader } from './TestHeader'
@@ -11,6 +11,8 @@ export function Test() {
   const [cursor, setCursor] = useState(0)
 
   useInput((input) => {
+    if (status !== "done") return
+
     if (input === 'q') {
       setCursor(Math.max(cursor - 1, 0))
     }
@@ -19,6 +21,10 @@ export function Test() {
       setCursor(Math.min(cursor + 1, cases.length - 1))
     }
   })
+
+  useEffect(() => {
+    setCursor(0)
+  }, [status])
 
   return (
     <Box flexDirection="column">

@@ -55,7 +55,7 @@ export async function executeSubmit(page: Browser<MessageType>) {
     (_, code: string) => {
       // https://cdn-paiza.paiza.jp/packs/partials/commons/challenge_code_submit.521270a72f1d189e.js
       remove_stored_history()
-      
+
       document.querySelector<HTMLInputElement>('#code')!.value = code
       document.querySelector<HTMLInputElement>('#programming_language_id')!.value =
         '2308' // JavaScript

@@ -73,10 +73,10 @@ export async function editorScript(context: MessageType) {
       </button>
     </div>
   `
-  
-  const pin = sidebar.querySelector(".PT_pin")!
-  pin.addEventListener("click", () => {
-    pin.classList.toggle("active")
+
+  const pin = sidebar.querySelector('.PT_pin')!
+  pin.addEventListener('click', () => {
+    pin.classList.toggle('active')
   })
 
   const tips = document.createElement('div')

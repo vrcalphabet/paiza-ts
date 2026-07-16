@@ -11,7 +11,7 @@ export function Test() {
   const [cursor, setCursor] = useState(0)
 
   useInput((input) => {
-    if (status !== "done") return
+    if (status !== 'done') return
 
     if (input === 'q') {
       setCursor(Math.max(cursor - 1, 0))

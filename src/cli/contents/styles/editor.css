@@ -53,6 +53,10 @@
   font-weight: bold;
 }
 
+:has(.PT_pin.active) .PT_timer {
+  padding-left: 490px;
+}
+
 .PT_buttons {
   display: flex;
   justify-content: space-around;

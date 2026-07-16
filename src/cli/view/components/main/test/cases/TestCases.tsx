@@ -9,9 +9,13 @@ interface TestCasesProps {
 export function TestCases({ cursor }: TestCasesProps) {
   const cases = useTest((state) => state.cases)
 
+  const sliceCount = Math.min(cases.length, 3)
+  const sliceStart =
+    cursor === cases.length - 1 ? cursor - (sliceCount - 1) : Math.max(cursor - 1, 0)
+
   return (
     <Box flexDirection="column" flexShrink={0}>
-      {cases.slice(0, 3).map((c, i) => (
+      {cases.slice(sliceStart, sliceStart + sliceCount).map((c, i) => (
         <Box key={i}>
           <Box columnGap={1}>
             {c.status === 'idle' && <Text color="gray">·</Text>}
@@ -22,7 +26,7 @@ export function TestCases({ cursor }: TestCasesProps) {
             )}
             {c.status === 'passed' && <Text color="greenBright">✓</Text>}
             {c.status === 'failed' && <Text color="redBright">✗</Text>}
-            {i === cursor ?
+            {sliceStart + i === cursor ?
               <Box columnGap={2}>
                 <Text color="black" backgroundColor="white">
                   Case #{c.no}

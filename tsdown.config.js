@@ -1,7 +1,10 @@
 import { defineConfig } from 'tsdown'
 
 export default defineConfig({
-  entry: { 'cli/main': 'src/cli/main.tsx' },
+  entry: {
+    'cli/main': 'src/cli/main.tsx',
+    'update/main': 'src/update/main.ts',
+  },
   minify: true,
   format: 'esm',
   outDir: 'dist',

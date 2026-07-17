@@ -42,5 +42,3 @@ export function App({ page, onQuit }: AppProps) {
     </Box>
   )
 }
-
-// TODO: ケースが4つ以上あるときの動作
